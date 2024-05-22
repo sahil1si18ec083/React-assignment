@@ -1,0 +1,75 @@
+[
+  {
+    "graphTitle": "Total Invoices Vs Paid Invoices",
+
+    "data": [
+      {
+        "x": ["April 1", "April 8", "April 15", "April 22", "April 29"],
+        "y": [100000, 65000, 80000, 52000, 55000],
+        "type": "bar",
+        "name": "Total Invoices"
+      },
+      {
+        "x": ["April 1", "April 8", "April 15", "April 22", "April 29"],
+        "y": [50000, 46000, 73000, 40000, 75000],
+        "type": "bar",
+        "name": "Paid Invoices"
+      }
+    ]
+  },
+  {
+    "graphTitle": "Overdue Invoices by Ageing",
+    "data":[ {
+        "x": ["<30 Days",
+        "31-60 Days",
+        "61-90 Days",
+        "91-120 Days",
+        ">120 Days"],
+        "y": [100000, 65000, 80000, 52000, 55000], 
+        "type": "bar"
+      }]
+
+  },
+  {
+    "graphTitle": "Invoices by Due Date (Top 5)",
+    "data":[ {
+        "x": ["<30 Days",
+        "31-60 Days",
+        "61-90 Days",
+        "91-120 Days",
+        ">120 Days"],
+        "y": [100800, 12000, 81000, 20000, 59100], 
+        "type": "bar"
+      }]
+  },
+  {
+    "graphTitle": "Partially Paid Invoices (Top 5)",
+    "data":[ {
+        "x": ["<30 Days",
+        "31-60 Days",
+        "61-90 Days",
+        "91-120 Days",
+        ">120 Days"],
+        "y": [1800, 11000, 8100, 20000, 5100], 
+        "type": "bar"
+      }]
+  },
+  {
+    "graphTitle": "Invoice Status Tracker",
+    "data":[ {
+        "values": [1200,345,800
+        ],
+        "labels": ["Overdue Invoice","Paid Invoices","Closed Invoices"], 
+        "type": "pie"
+      }]
+  },
+  {
+    "graphTitle": "Dispute Status Tracker",
+    "data":[ {
+        "values": [1200,1450,786,1568,3400
+        ],
+        "labels": ["Open", "In Progress", "Resolved","Rejected","Closed"], 
+        "type": "pie"
+      }]
+  }
+]

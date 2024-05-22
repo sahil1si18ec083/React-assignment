@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+}
+
+.appContent {
+  height: calc(100vh - 3.025rem);
+  overflow: hidden;
+  display: flex;
+}
+
+/* styling for mainContent */
+
+.mainContent {
+  width: calc(100% - 4.55rem);
+  overflow-y: auto;
+  background-color: #e7e9ea;
+}
+
+/* Styling scrollbar */
+
+/* ::-webkit-scrollbar {
+  width: 10px;
+} */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #dddddd;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+.css-orq8zk {
+  height: 68px;
+}
+.styleGridItem_I0 {
+  margin-left: 10px !important;
+}

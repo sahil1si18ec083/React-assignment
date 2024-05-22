@@ -1,0 +1,31 @@
+[
+  {
+    "tileTitle": "Open Invoices",
+    "value": 1500
+  },
+  {
+    "tileTitle": "Overdue Invoices",
+    "value": 32000
+  },
+  {
+    "tileTitle": "Due Invoices",
+    "value": 857
+  },
+  {
+    "tileTitle": "Partially Paid Invoices",
+    "value": 568
+  },
+  {
+    "tileTitle": "Paid Invoices",
+    "value": 2200
+  },
+  {
+    "tileTitle": "Disputes",
+    "value": 2700
+  },
+  {
+    "tileTitle": "Payments",
+    "value": 1679
+  },
+  { "tileTitle": "Rejected", "value": 1244 }
+]
