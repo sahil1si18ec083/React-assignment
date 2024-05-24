@@ -1,3 +1,12 @@
 .container{
     padding:1rem 1rem;
 }
+
+.info-tile{
+    white-space: nowrap;
+}
+
+.flex-box{
+    display: flex;
+    flex-direction: column;
+}

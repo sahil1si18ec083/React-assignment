@@ -1,0 +1,58 @@
+.listHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0rem;
+    background-color: #fafcff;
+    padding-block: 0.6rem;
+    z-index: 5;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sortingPopover {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .sort-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .Flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.0rem 0.7rem;
+    gap: 1rem;
+  }
+  .cancel {
+    color: #3026b9;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    /* margin-left: 110px; */
+    cursor: pointer;
+  }
+  .apply-changes {
+    margin-right: 23px;
+  }
+  .createButton {
+    padding: 0.5rem;
+    color: white;
+    background-color: #3026b9;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sort-btn,#advancedFilters{
+    padding: 0.5rem;
+    color: white;
+    background-color: #3026b9;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }

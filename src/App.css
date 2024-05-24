@@ -44,3 +44,6 @@
 .styleGridItem_I0 {
   margin-left: 10px !important;
 }
+.listTableContainer{
+  height: calc(100vh - 11rem);
+}

@@ -41,7 +41,7 @@ const Analytics = () => {
                 <Plot
                   data={dashboardJsonData[index].data}
                   layout={item}
-                  style={{ width: "100%", height: "100%" }}
+                  style={{ width: "300px", height: "300px" }}
                 />
               </AnalyticsGraphs>
             );

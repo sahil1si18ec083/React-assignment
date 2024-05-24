@@ -16,7 +16,7 @@ const renderIcon = (iconLabel) => {
 
 const moduleListFields = [
   {
-    moduleName: "Sales Order",
+    moduleName: "InvoiceReports",
     columnsList: [
       {
         fieldName: "Order ID",
@@ -64,13 +64,7 @@ const moduleListFields = [
         visible: true,
         pinned: false,
       },
-      {
-        fieldName: "Action",
-        fieldBinding: "Action",
-        visible: true,
-        pinned: false,
-        type: "action",
-      },
+   
     ],
   },
 ];
@@ -106,4 +100,16 @@ const analyticsChartFields = [
     
   },
 ];
-export { renderIcon, moduleListFields, analyticsChartFields };
+const sortingParameters = [
+  {
+    moduleName: "InvoiceReports",
+    sortingFields: [
+      { key: "salesHeaderId", fieldName: "Order ID" },
+      { key: "createdDate", fieldName: "Created Date" },
+      { key: "requestDeliveryDate", fieldName: "Req. Del Date" },
+      { key: "amount", fieldName: "Amount" },
+    ],
+  },
+ 
+];
+export { renderIcon, moduleListFields, analyticsChartFields,sortingParameters };

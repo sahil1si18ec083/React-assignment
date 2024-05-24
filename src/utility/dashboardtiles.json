@@ -12,7 +12,7 @@
     "value": 857
   },
   {
-    "tileTitle": "Partially Paid Invoices",
+    "tileTitle": "Partial Invoices",
     "value": 568
   },
   {
@@ -22,10 +22,5 @@
   {
     "tileTitle": "Disputes",
     "value": 2700
-  },
-  {
-    "tileTitle": "Payments",
-    "value": 1679
-  },
-  { "tileTitle": "Rejected", "value": 1244 }
+  }
 ]
