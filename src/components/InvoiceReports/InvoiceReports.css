@@ -28,7 +28,7 @@
     gap: 1rem;
   }
   .cancel {
-    color: #3026b9;
+    color: #085aaa;
     border: none;
     background: transparent;
     font-size: 1rem;
@@ -42,7 +42,7 @@
   .createButton {
     padding: 0.5rem;
     color: white;
-    background-color: #3026b9;
+    background-color: #085aaa;
     border-radius: 6px;
     border: none;
     cursor: pointer;
@@ -51,7 +51,7 @@
   .sort-btn,#advancedFilters{
     padding: 0.5rem;
     color: white;
-    background-color: #3026b9;
+    background-color: #085aaa;
     border-radius: 6px;
     border: none;
     cursor: pointer;
@@ -68,4 +68,9 @@
   #cancel-filter{
     border: 1px solid #3026b9;
     border-radius: 6px;
+  }
+  .filter-label{
+    color: #3026b9;
+    font-weight: 550;
+    font-size: 0.9rem;
   }

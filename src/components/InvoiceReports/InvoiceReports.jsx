@@ -39,11 +39,17 @@ const InvoiceReports = () => {
         handleClose={handleCloseFilter}
         style={style}
       >
-        <ListViewFilters />
+        <ListViewFilters aDataList={aDataList} setaDataList={setaDataList}
+        anchorElFilter={anchorElFilter}
+        setAnchorElFilter={setAnchorElFilter}
+        
+        />
       </CustomModal>
-      <ListViewHeader aDataList={aDataList} setaDataList={setaDataList}
-      anchorElFilter={anchorElFilter}
-      setAnchorElFilter={setAnchorElFilter}
+      <ListViewHeader
+        aDataList={aDataList}
+        setaDataList={setaDataList}
+        anchorElFilter={anchorElFilter}
+        setAnchorElFilter={setAnchorElFilter}
       />
 
       <ListViewTable aDataList={aDataList} setaDataList={setaDataList} />

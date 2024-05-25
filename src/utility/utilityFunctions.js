@@ -3,6 +3,7 @@ function padTo2Digits(num) {
   }
 
 function formatDate(date) {
+  
     date = new Date(date);
     return [
       padTo2Digits(date.getDate()),
@@ -10,13 +11,6 @@ function formatDate(date) {
       date.getFullYear(),
     ].join("-");
   
-    // +
-    // " " +
-    // [
-    //   padTo2Digits(date.getHours()),
-    //   padTo2Digits(date.getMinutes()),
-    //   padTo2Digits(date.getSeconds()),
-    // ].join(":")
   }
   export function getYYMMtimeStamp(timestamp){
     

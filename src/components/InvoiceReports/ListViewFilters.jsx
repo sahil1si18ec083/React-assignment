@@ -8,7 +8,8 @@ import CustomSelect from "../CustomComponents/CustomSelect";
 import CustomDatePicker from "../CustomComponents/CustomDatePicker";
 import { selectedInvoiceStatus } from "../../utility/constants";
 import { getYYMMtimeStamp } from "../../utility/utilityFunctions";
-const ListViewFilters = () => {
+import fnFilterInvoices from "./fnFilterInvoices";
+const ListViewFilters = ({ aDataList, setaDataList , anchorElFilter, setAnchorElFilter}) => {
   const appContext = useContext(AppContext);
   const currentModule = appContext.currentModule;
   const filterFields = filterParameters
@@ -23,43 +24,52 @@ const ListViewFilters = () => {
     status: null,
   });
   const fnHandleChangeFilter = (event) => {
-    debugger;
-    setSelectedFilters((prev)=>{
-      return({
+   
+    setSelectedFilters((prev) => {
+      return {
         ...prev,
-        [event.target.name]: event.target.value
-      })
-    })
+        [event.target.name]: event.target.value,
+      };
+    });
   };
   const fnHandleChangecreatedDate = (event) => {
-    setSelectedFilters((prev)=>{
-      return({
+    setSelectedFilters((prev) => {
+      return {
         ...prev,
-        createdDate: getYYMMtimeStamp(event?.$d?.getTime())
-      })
-    })
+        createdDate: getYYMMtimeStamp(event?.$d?.getTime()),
+      };
+    });
   };
   const fnHandleChangerequestDeliveryDate = (event) => {
-    setSelectedFilters((prev)=>{
-      return({
+    setSelectedFilters((prev) => {
+      return {
         ...prev,
-        requestDeliveryDate: getYYMMtimeStamp(event?.$d?.getTime())
-      })
+        requestDeliveryDate: getYYMMtimeStamp(event?.$d?.getTime()),
+      };
+    });
+  };
+  const fnApplyHandler = () => {
+    fnFilterInvoices(selectedFilters, aDataList, setaDataList);
+    setAnchorElFilter(null);
+  };
+  const fnCancelHandler = () => {
+    setSelectedFilters({
+      salesHeaderId: null,
+      createdDate: null,
+      requestDeliveryDate: null,
+      status: null,
     })
+    setAnchorElFilter(null);
   };
   return (
     <div>
-      {
-        JSON.stringify(selectedFilters)
-      }
+     
       <Grid container spacing={2}>
         {filterFields.map((item, index) => {
           if (item.type == "textfield") {
             return (
-              <Grid sx={{
-                
-              }} item xs={4}>
-                <span>{item.fieldName}</span>
+              <Grid sx={{}} item xs={4}>
+                <span className="filter-label">{item.fieldName}</span>
                 <CustomTextField
                   placeholder={item.label}
                   value={selectedFilters[item?.key]}
@@ -71,7 +81,7 @@ const ListViewFilters = () => {
           } else if (item.key == "createdDate") {
             return (
               <Grid item xs={4}>
-                <span>{item.fieldName}</span>
+               <span className="filter-label">{item.fieldName}</span>
                 <CustomDatePicker
                   name={item.key}
                   value={selectedFilters[item?.key]}
@@ -84,7 +94,7 @@ const ListViewFilters = () => {
           } else if (item.key == "requestDeliveryDate") {
             return (
               <Grid item xs={4}>
-                <span>{item.fieldName}</span>
+               <span className="filter-label">{item.fieldName}</span>
                 <CustomDatePicker
                   name={item.key}
                   value={selectedFilters[item?.key]}
@@ -96,15 +106,15 @@ const ListViewFilters = () => {
             );
           } else if (item.type == "select") {
             return (
-              <Grid item xs={4}
-              sx={{
-                display:"flex !important ",
-                flexDirection:"column !important",
-                
-              }}
-              
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex !important ",
+                  flexDirection: "column !important",
+                }}
               >
-                <span>{item.fieldName}</span>
+                <span className="filter-label">{item.fieldName}</span>
                 <CustomSelect
                   value={selectedFilters[item?.key]}
                   name={item.key}
@@ -120,14 +130,14 @@ const ListViewFilters = () => {
       <div className="Flex" id="Flex-filters">
         <button
           className="apply-changes createButton"
-          onClick={() => fnApplyHandler}
+          onClick={() => fnApplyHandler()}
         >
           Apply Changes
         </button>
         <button
           className="cancel"
           id="cancel-filter"
-          onClick={() => fnCancelHandler}
+          onClick={() => fnCancelHandler()}
         >
           Cancel
         </button>

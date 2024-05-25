@@ -31,7 +31,8 @@ const SortingPopover = ({
       return moduleData.moduleName === currentModule;
     })
     ?.at(0)?.sortingFields;
-  const [sortBy, setSortBy] = useState(sortingFields[0].key);
+  const [sortBy, setSortBy] = useState(sortingFields?.at(0)?.key);
+  
   const [sign, setSign] = useState("asc");
   
   const style = {

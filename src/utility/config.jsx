@@ -59,7 +59,7 @@ const moduleListFields = [
       },
       {
         fieldName: "Status",
-        fieldBinding: "documentProcessStatus",
+        fieldBinding: "status",
         type: "status",
         visible: true,
         pinned: false,

@@ -10,7 +10,7 @@ const ListViewHeader = ({
 }) => {
   return (
     <header className="listHeader">
-      {/* <h3>{moduleMetadata?.moduleName}</h3> */}
+  
       <div className="actionButtons">
         <SortingPopover aDataList={aDataList} setaDataList={setaDataList} />
       </div>
@@ -24,4 +24,4 @@ const ListViewHeader = ({
   );
 };
 
-export default ListViewHeader;
+export default React.memo(ListViewHeader);

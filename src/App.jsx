@@ -5,11 +5,17 @@ import SideNav from "./components/SideNav/SideNav";
 import AppHeader from "./components/AppHeader/AppHeader.jsx";
 import AppContext from "./AppContext.js";
 import InvoiceReportsJson from "../src/utility/invoiceReports.json";
+import { useNavigate } from "react-router-dom";
 function App() {
-  const [currentModule, setCurrentModule] = useState("InvoiceReports");
+  const [currentModule, setCurrentModule] = useState("Analytics");
   const [listPage, setListPage] = useState(0);
 
   const [pageno, setpageno] = useState(0);
+  const navigate= useNavigate()
+  useEffect(()=>{
+    navigate(`/${currentModule}`)
+
+  },[])
 
   return (
     <AppContext.Provider
@@ -26,7 +32,7 @@ function App() {
         <AppHeader />
 
         <div className="appContent">
-          <SideNav />
+          <SideNav currentModule={currentModule} setCurrentModule={setCurrentModule} />
           <div className="mainContent">
             <MainContainer />
           </div>
