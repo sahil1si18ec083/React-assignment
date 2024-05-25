@@ -64,7 +64,6 @@ const moduleListFields = [
         visible: true,
         pinned: false,
       },
-   
     ],
   },
 ];
@@ -90,14 +89,12 @@ const analyticsChartFields = [
     xaxis: { title: "Months of Year" },
     yaxis: { title: "Number of Invoices" },
   },
-  
+
   {
     title: "Invoice Status Tracker",
-    
   },
   {
     title: "Dispute Status Tracker",
-    
   },
 ];
 const sortingParameters = [
@@ -110,6 +107,42 @@ const sortingParameters = [
       { key: "amount", fieldName: "Amount" },
     ],
   },
- 
 ];
-export { renderIcon, moduleListFields, analyticsChartFields,sortingParameters };
+const filterParameters = [
+  {
+    moduleName: "InvoiceReports",
+    filterFields: [
+      {
+        key: "salesHeaderId",
+        fieldName: "Order ID",
+        type: "textfield",
+        label: "Enter Order ID",
+      },
+      {
+        key: "createdDate",
+        fieldName: "Created Date",
+        type: "datepicker",
+        label: "Enter Created Date",
+      },
+      {
+        key: "requestDeliveryDate",
+        fieldName: "Req. Del Date",
+        type: "datepicker",
+        label: "Enter Req. Del Date",
+      },
+      {
+        key: "status",
+        fieldName: "Invoice Status",
+        type: "select",
+        label: "Select Status",
+      },
+    ],
+  },
+];
+export {
+  renderIcon,
+  moduleListFields,
+  analyticsChartFields,
+  sortingParameters,
+  filterParameters,
+};

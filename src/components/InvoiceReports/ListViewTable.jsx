@@ -6,7 +6,7 @@ import AppContext from "../../AppContext";
 import { useContext } from "react";
 import { recordsOnOnePage } from "../../utility/constants";
 const ListViewTable = ({aDataList,setaDataList}) => {
-  debugger
+ 
   const appContext = useContext(AppContext);
   const currentModule = appContext.currentModule;
   const defaultModuleColumns = moduleListFields

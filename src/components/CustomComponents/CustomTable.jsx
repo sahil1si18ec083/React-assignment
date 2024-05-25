@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
   }));
 const CustomTable = ({ Headercolumns, rows }) => {
-  debugger;
+  
   return (
     <>
       <div className="tableview" style={{ margin: "20px", overflowY:"scroll" }}>
