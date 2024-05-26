@@ -1,39 +1,38 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+
+// InfoTile component to display individual tiles with title and value
 const InfoTile = ({ tileTitle, value }) => {
   return (
     <>
+      {/* Grid item for responsive layout */}
       <Grid
-        xs={2}
+        xs={12}  // Full width on extra-small screens
+        sm={6}   // Half width on small screens
+        md={4}   // One-third width on medium screens
+        lg={2}   // One-sixth width on large screens
         item
         sx={{
-          padding: "2% 2%",
+          padding: "2% 2%",  // Padding around each grid item
         }}
       >
+        {/* Paper component to wrap each info tile with styling */}
         <Paper
           sx={{
-            // height: "16vh",
-            padding: "12px 8px 12px 8px",
-            borderRadius: "10px",
-            // gap: "8px",
-            textAlign: "center",
-
-            padding: "20px",
-
-            boxShadow: "0px 12px 12px 0px #E1E1E1",
-
+            padding: "20px",  // Padding inside the paper component
+            borderRadius: "10px",  // Rounded corners
+            textAlign: "center",  // Centered text alignment
+            boxShadow: "0px 12px 12px 0px #E1E1E1",  // Shadow for elevation effect
             backgroundColor: (theme) =>
-              theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+              theme.palette.mode === "dark" ? "#1A2027" : "#fff",  // Background color based on theme mode
           }}
         >
+          {/* Flexbox container for the tile title and value */}
           <div className="flex-box">
-          <span className="info-tile">{tileTitle}</span>
-          <span>{value}</span>
+            <span className="info-tile">{tileTitle}</span>  {/* Tile title */}
+            <span>{value}</span>  {/* Tile value */}
           </div>
-   
-          {/* <h4>{tileTitle}</h4>
-          <h4>{value}</h4> */}
         </Paper>
       </Grid>
     </>

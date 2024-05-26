@@ -9,66 +9,74 @@ import CustomDatePicker from "../CustomComponents/CustomDatePicker";
 import { selectedInvoiceStatus } from "../../utility/constants";
 import { getYYMMtimeStamp } from "../../utility/utilityFunctions";
 import fnFilterInvoices from "./fnFilterInvoices";
-const ListViewFilters = ({ aDataList, setaDataList , anchorElFilter, setAnchorElFilter}) => {
+
+const ListViewFilters = ({ aDataList, setaDataList, anchorElFilter, setAnchorElFilter }) => {
+  // Accessing context data
   const appContext = useContext(AppContext);
   const currentModule = appContext.currentModule;
+
+  // Filter fields based on the current module
   const filterFields = filterParameters
-    .filter((moduleData) => {
-      return moduleData.moduleName === currentModule;
-    })
+    .filter((moduleData) => moduleData.moduleName === currentModule)
     ?.at(0)?.filterFields;
+
+  // State to manage selected filters
   const [selectedFilters, setSelectedFilters] = useState({
     salesHeaderId: null,
     createdDate: null,
     requestDeliveryDate: null,
     status: null,
   });
+
+  // Handle change for text field filters
   const fnHandleChangeFilter = (event) => {
-   
-    setSelectedFilters((prev) => {
-      return {
-        ...prev,
-        [event.target.name]: event.target.value,
-      };
-    });
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
   };
+
+  // Handle change for created date filter
   const fnHandleChangecreatedDate = (event) => {
-    setSelectedFilters((prev) => {
-      return {
-        ...prev,
-        createdDate: getYYMMtimeStamp(event?.$d?.getTime()),
-      };
-    });
+    setSelectedFilters((prev) => ({
+      ...prev,
+      createdDate: getYYMMtimeStamp(event?.d?.getTime()),
+    }));
   };
+
+  // Handle change for request delivery date filter
   const fnHandleChangerequestDeliveryDate = (event) => {
-    setSelectedFilters((prev) => {
-      return {
-        ...prev,
-        requestDeliveryDate: getYYMMtimeStamp(event?.$d?.getTime()),
-      };
-    });
+    setSelectedFilters((prev) => ({
+      ...prev,
+      requestDeliveryDate: getYYMMtimeStamp(event?.d?.getTime()),
+    }));
   };
+
+  // Apply filters and update data list
   const fnApplyHandler = () => {
     fnFilterInvoices(selectedFilters, aDataList, setaDataList);
     setAnchorElFilter(null);
   };
+
+  // Reset filters and close filter modal
   const fnCancelHandler = () => {
     setSelectedFilters({
       salesHeaderId: null,
       createdDate: null,
       requestDeliveryDate: null,
       status: null,
-    })
+    });
     setAnchorElFilter(null);
   };
+
   return (
-    <div>
-     
+    <div className="list-view-filters">
+      {/* Grid container for filter fields */}
       <Grid container spacing={2}>
         {filterFields.map((item, index) => {
-          if (item.type == "textfield") {
+          if (item.type === "textfield") {
             return (
-              <Grid sx={{}} item xs={4}>
+              <Grid item xs={12} lg={4} sm={12} md={6} key={index}>
                 <span className="filter-label">{item.fieldName}</span>
                 <CustomTextField
                   placeholder={item.label}
@@ -78,42 +86,22 @@ const ListViewFilters = ({ aDataList, setaDataList , anchorElFilter, setAnchorEl
                 />
               </Grid>
             );
-          } else if (item.key == "createdDate") {
+          } else if (item.key === "createdDate" || item.key === "requestDeliveryDate") {
             return (
-              <Grid item xs={4}>
-               <span className="filter-label">{item.fieldName}</span>
+              <Grid item xs={12} lg={4} sm={12} md={6} key={index}>
+                <span className="filter-label">{item.fieldName}</span>
                 <CustomDatePicker
                   name={item.key}
                   value={selectedFilters[item?.key]}
-                  handleChange={fnHandleChangecreatedDate}
+                  handleChange={item.key === "createdDate" ? fnHandleChangecreatedDate : fnHandleChangerequestDeliveryDate}
                   disablePastDates={false}
                   className="filter-date-pickers"
                 />
               </Grid>
             );
-          } else if (item.key == "requestDeliveryDate") {
+          } else if (item.type === "select") {
             return (
-              <Grid item xs={4}>
-               <span className="filter-label">{item.fieldName}</span>
-                <CustomDatePicker
-                  name={item.key}
-                  value={selectedFilters[item?.key]}
-                  handleChange={fnHandleChangerequestDeliveryDate}
-                  disablePastDates={false}
-                  className="filter-date-pickers"
-                />
-              </Grid>
-            );
-          } else if (item.type == "select") {
-            return (
-              <Grid
-                item
-                xs={4}
-                sx={{
-                  display: "flex !important ",
-                  flexDirection: "column !important",
-                }}
-              >
+              <Grid item xs={12} lg={4} sm={12} md={6} key={index}>
                 <span className="filter-label">{item.fieldName}</span>
                 <CustomSelect
                   value={selectedFilters[item?.key]}
@@ -127,18 +115,12 @@ const ListViewFilters = ({ aDataList, setaDataList , anchorElFilter, setAnchorEl
           }
         })}
       </Grid>
+      {/* Apply and Cancel buttons */}
       <div className="Flex" id="Flex-filters">
-        <button
-          className="apply-changes createButton"
-          onClick={() => fnApplyHandler()}
-        >
+        <button className="apply-changes createButton" onClick={fnApplyHandler}>
           Apply Changes
         </button>
-        <button
-          className="cancel"
-          id="cancel-filter"
-          onClick={() => fnCancelHandler()}
-        >
+        <button className="cancel" id="cancel-filter" onClick={fnCancelHandler}>
           Cancel
         </button>
       </div>

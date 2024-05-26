@@ -1,76 +1,108 @@
 .listHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0rem;
-    background-color: #fafcff;
-    padding-block: 0.6rem;
-    z-index: 5;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0rem;
+  background-color: #fafcff;
+  padding-block: 0.6rem;
+  z-index: 5;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
-  .sortingPopover {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .sort-btn{
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .Flex {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.0rem 0.7rem;
-    gap: 1rem;
-  }
-  .cancel {
-    color: #085aaa;
-    border: none;
-    background: transparent;
-    font-size: 1rem;
-    font-weight: 500;
-    /* margin-left: 110px; */
-    cursor: pointer;
-  }
-  .apply-changes {
-    margin-right: 23px;
-  }
-  .createButton {
-    padding: 0.5rem;
-    color: white;
-    background-color: #085aaa;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
+.sortingPopover {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.sort-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.Flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem 0.7rem;
+  gap: 1rem;
+}
+.cancel {
+  color: #085aaa;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  /* margin-left: 110px; */
+  cursor: pointer;
+}
+.apply-changes {
+  margin-right: 23px;
+}
+.createButton {
+  padding: 0.5rem;
+  color: white;
+  background-color: #085aaa;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
 
-  .sort-btn,#advancedFilters{
-    padding: 0.5rem;
-    color: white;
-    background-color: #085aaa;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
+.sort-btn,
+#advancedFilters {
+  padding: 0.5rem;
+  color: white;
+  background-color: #085aaa;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
 
-  .MuiInputBase-root{
-    height: 2.5rem !important;
-    
-  }
+.MuiInputBase-root {
+  height: 2.5rem !important;
+}
 
-  #Flex-filters{
-    justify-content: flex-end ;
+#Flex-filters {
+  justify-content: flex-end;
+}
+#cancel-filter {
+  border: 1px solid #3026b9;
+  border-radius: 6px;
+}
+.filter-label {
+  color: #3026b9;
+  font-weight: 550;
+  font-size: 0.9rem;
+}
+
+@media screen and (min-width: 1290px) {
+  .list-view-filters .MuiFormControl-root {
+    width: 12rem !important;
   }
-  #cancel-filter{
-    border: 1px solid #3026b9;
-    border-radius: 6px;
+  .list-view-filters .MuiInputBase-root {
+    width: 12rem !important;
   }
-  .filter-label{
-    color: #3026b9;
-    font-weight: 550;
-    font-size: 0.9rem;
+}
+@media screen and (max-width: 1180px) and (min-width: 1240px) {
+  .list-view-filters .MuiFormControl-root {
+    width: 10rem !important;
   }
+  .list-view-filters .MuiInputBase-root {
+    width: 12rem !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .list-view-filters .MuiFormControl-root {
+    width: 12rem !important;
+  }
+  .list-view-filters .MuiInputBase-root {
+    width: 12rem !important;
+  }
+}
+@media screen and (max-width: 1350px) {
+  #Flex-filters {
+    margin-top: 5%;
+    justify-content: flex-start;
+    padding: 0% 0%;
+  }
+}

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { sortingParameters } from "../../utility/config";
-
 import { Tooltip } from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
 import { Popover } from "@mui/material";
@@ -12,29 +10,25 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import AppContext from "../../AppContext";
 import CustomModal from "../CustomComponents/CustomModal";
-const SortingPopover = ({
-  //   payload,
-  //   setPayload,
-  //   setPage,
-  //   sortBy,
-  //   setSortBy,
-  //   sortingOrder,
-  //   setSortingOrder,
-  aDataList,
-  setaDataList,
-}) => {
+
+const SortingPopover = ({ aDataList, setaDataList }) => {
+  // Accessing context data
   const appContext = React.useContext(AppContext);
-  const [anchorElSorting, setAnchorElSorting] = useState(null);
   const currentModule = appContext.currentModule;
+
+  // State for anchor element of the sorting popover
+  const [anchorElSorting, setAnchorElSorting] = useState(null);
+
+  // Retrieving sorting fields for the current module
   const sortingFields = sortingParameters
-    .filter((moduleData) => {
-      return moduleData.moduleName === currentModule;
-    })
+    .filter((moduleData) => moduleData.moduleName === currentModule)
     ?.at(0)?.sortingFields;
+
+  // State for selected sort by field and sorting order
   const [sortBy, setSortBy] = useState(sortingFields?.at(0)?.key);
-  
   const [sign, setSign] = useState("asc");
-  
+
+  // Style for the sorting popover
   const style = {
     position: "absolute",
     top: "49%",
@@ -47,70 +41,61 @@ const SortingPopover = ({
     borderRadius: "0.375rem",
   };
 
-  
-
-  const handleSortButtonPress = (oEvent) => {
+  // Handle click on the sort button
+  const handleSortButtonPress = (event) => {
     if (!anchorElSorting) {
-      setAnchorElSorting(oEvent.currentTarget);
+      setAnchorElSorting(event.currentTarget);
     }
   };
 
+  // Close the sorting popover
   const handleCloseSorting = () => {
     setAnchorElSorting(null);
   };
 
-  const onSortByChange = (oEvent) => {
-    setSortBy(oEvent.target.value);
-    // const aDataListCopy=JSON.parse(JSON.stringify(aDataList));
-    // aDataListCopy.sort((a,b)=>a[sortBy]-b[sortBy])
-    // setaDataList(aDataListCopy)
-
-    // const sortBy = oEvent.target.value;
-    // payload = { ...payload, sortBy: sortBy, sortOrder: sortingOrder };
-    // dispatch(setPayload(payload));
-    // dispatch(setPage(0));
-    // setSortBy(sortBy);
-    // setAnchorElSorting(null);
+  // Handle change in sort by field
+  const onSortByChange = (event) => {
+    setSortBy(event.target.value);
   };
 
-  const onSortOrderChange = (oEvent) => {
-    setSign(oEvent.target.value);
-    // const sortOrder = oEvent.target.value;
-    // payload = { ...payload, sortOrder: sortOrder, sortBy: sortBy };
-    // dispatch(setPayload(payload));
-    // dispatch(setPage(0));
-    // setSortingOrder(sortOrder);
-    // setAnchorElSorting(null);
+  // Handle change in sorting order
+  const onSortOrderChange = (event) => {
+    setSign(event.target.value);
   };
+
+  // Apply sorting changes
   const onApplyCustomization = () => {
     const aDataListCopy = JSON.parse(JSON.stringify(aDataList));
-    sign == "asc"
+    sign === "asc"
       ? aDataListCopy.sort((a, b) => a[sortBy] - b[sortBy])
       : aDataListCopy.sort((a, b) => b[sortBy] - a[sortBy]);
     setaDataList(aDataListCopy);
     setAnchorElSorting(null);
   };
+
+  // Cancel sorting changes
   const onCancelChanges = () => {
     setAnchorElSorting(null);
   };
+
   return (
     <button
       onClick={handleSortButtonPress}
       title="Sort List"
       className="sort-btn"
     >
-   Sort list
+      Sort list
       <CustomModal
         open={Boolean(anchorElSorting)}
         handleClose={handleCloseSorting}
         style={style}
       >
         <div className="sortingPopover">
+          {/* Sort By radio group */}
           <FormControl>
             <FormLabel sx={{ fontWeight: "bold" }}>Sort By</FormLabel>
             <RadioGroup
               defaultValue={sortBy}
-              
               name="radio-buttons-group"
               onChange={onSortByChange}
             >
@@ -126,6 +111,8 @@ const SortingPopover = ({
               })}
             </RadioGroup>
           </FormControl>
+
+          {/* Sorting Order radio group */}
           <FormControl sx={{ marginTop: "0.6rem" }}>
             <FormLabel sx={{ fontWeight: "bold" }}>Sorting Order</FormLabel>
             <RadioGroup
@@ -146,6 +133,8 @@ const SortingPopover = ({
             </RadioGroup>
           </FormControl>
         </div>
+
+        {/* Apply and Cancel buttons */}
         <div className="Flex">
           <button className="cancel" onClick={onCancelChanges}>
             Cancel
@@ -158,18 +147,6 @@ const SortingPopover = ({
           </button>
         </div>
       </CustomModal>
-      {/* <Popover
-        style={{ borderRadius: "10rem" }}
-        open={Boolean(anchorElSorting)}
-        anchorEl={anchorElSorting}
-        onClose={handleCloseSorting}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-      >
-       
-      </Popover> */}
     </button>
   );
 };

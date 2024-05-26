@@ -1,27 +1,32 @@
-// This is a custom Component that takes value which will show on the ui when user clicks the option,
-// Name will be the name of the select option
-// DropDownArray is array that will show up when user wants to choose options
-// placeholder will be shown when nothing is clicked
-// fnHandleChange will be invoked from the parent component only
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
-
 import Select from "@mui/material/Select";
-
 import { Typography } from "@mui/material";
-const CustomSelect = ({value, name, dropDownArray, placeholder,fnHandleChange}) => {
+
+// CustomSelect component for rendering a dropdown menu
+// Props:
+// - value: The currently selected value
+// - name: The name of the select element
+// - dropDownArray: Array of options to be displayed in the dropdown
+// - placeholder: Placeholder text shown when no option is selected
+// - fnHandleChange: Function to handle changes when an option is selected
+const CustomSelect = ({ value, name, dropDownArray, placeholder, fnHandleChange }) => {
   return (
     <>
+      {/* Select component from Material-UI */}
       <Select
-        value={dropDownArray?.indexOf(value)}
-        name={name}
-        onChange={(event) => fnHandleChange(event)}
+        value={dropDownArray?.indexOf(value)}  // Current selected value, index of value in dropDownArray
+        name={name}  // Name attribute for the select element
+        onChange={(event) => fnHandleChange(event)}  // Change handler for when an option is selected
         renderValue={(selected) => {
+          // Render the value displayed in the select element
           if (dropDownArray.indexOf(value) === -1) {
-            return <Typography>{placeholder}</Typography>;
+            return <Typography>{placeholder}</Typography>;  // Show placeholder if no option is selected
           }
-          return value;
+          return value;  // Show the selected value
         }}
       >
+        {/* Map through dropDownArray to create MenuItem components */}
         {dropDownArray?.map((dropDownValue, index) => {
           return (
             <MenuItem key={index} value={dropDownValue}>

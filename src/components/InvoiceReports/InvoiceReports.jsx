@@ -1,26 +1,38 @@
+import React, { useContext, useState } from "react";
 import ListViewTable from "./ListViewTable";
 import TablePagination from "@mui/material/TablePagination";
 import InvoiceReportsJson from "../../utility/invoiceReports.json";
-import { useContext, useState } from "react";
-import ListViewHeader from "./ListViewHeader";
 import AppContext from "../../AppContext";
 import { recordsOnOnePage } from "../../utility/constants";
 import "./InvoiceReports.css";
+import ListViewHeader from "./ListViewHeader";
 import ListViewFilters from "./ListViewFilters";
 import CustomModal from "../CustomComponents/CustomModal";
+
 const InvoiceReports = () => {
+  // Total number of records from the JSON data
   const totalRecords = InvoiceReportsJson.data.length;
+
+  // Accessing context data
   const appContext = useContext(AppContext);
   const listPage = appContext.pageno;
-  const handlePageChange = (oEvent, newPage) => {
+
+  // Function to handle page change
+  const handlePageChange = (event, newPage) => {
     appContext.setpageno(newPage);
   };
+
+  // State to manage data list and filter anchor element
   const [aDataList, setaDataList] = useState(InvoiceReportsJson.data);
   const [anchorElFilter, setAnchorElFilter] = useState(null);
-  function handleCloseFilter() {
+
+  // Function to close filter modal
+  const handleCloseFilter = () => {
     setAnchorElFilter(null);
-  }
-  const style = {
+  };
+
+  // Style for the modal
+  const modalStyle = {
     position: "absolute",
     top: "49%",
     left: "50%",
@@ -34,17 +46,21 @@ const InvoiceReports = () => {
 
   return (
     <>
+      {/* Modal for filters */}
       <CustomModal
         open={Boolean(anchorElFilter)}
         handleClose={handleCloseFilter}
-        style={style}
+        style={modalStyle}
       >
-        <ListViewFilters aDataList={aDataList} setaDataList={setaDataList}
-        anchorElFilter={anchorElFilter}
-        setAnchorElFilter={setAnchorElFilter}
-        
+        <ListViewFilters
+          aDataList={aDataList}
+          setaDataList={setaDataList}
+          anchorElFilter={anchorElFilter}
+          setAnchorElFilter={setAnchorElFilter}
         />
       </CustomModal>
+
+      {/* Header with filters */}
       <ListViewHeader
         aDataList={aDataList}
         setaDataList={setaDataList}
@@ -52,10 +68,13 @@ const InvoiceReports = () => {
         setAnchorElFilter={setAnchorElFilter}
       />
 
+      {/* Table to display data */}
       <ListViewTable aDataList={aDataList} setaDataList={setaDataList} />
+
+      {/* Pagination component */}
       <TablePagination
         className="sticky-pagination"
-        rowsPerPageOptions={[]}
+        rowsPerPageOptions={[]} // Removing rows per page options
         component="div"
         count={totalRecords}
         rowsPerPage={recordsOnOnePage}
@@ -65,4 +84,5 @@ const InvoiceReports = () => {
     </>
   );
 };
+
 export default InvoiceReports;
